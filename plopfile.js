@@ -1,7 +1,4 @@
 const plopConfig = plop => {
-  plop.load("@bradgarropy/plop-pack-helpers")
-  plop.load("@bradgarropy/plop-pack-actions")
-
   plop.setGenerator("post", {
     description: "A basic Gatsby starter blog post.",
     prompts: [
@@ -19,8 +16,9 @@ const plopConfig = plop => {
     actions: [
       {
         type: "add",
-        path: "content/blog/{{slug title}}/index.md",
+        path: "content/blog/{{dashCase title}}/index.md",
         templateFile: "templates/post.hbs",
+        data: { date: new Date().toISOString() },
       },
     ],
   })
