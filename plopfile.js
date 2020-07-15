@@ -1,3 +1,5 @@
+const fs = require("fs")
+const path = require("path")
 const slugify = require("slugify")
 
 const plopConfig = plop => {
@@ -6,6 +8,16 @@ const plopConfig = plop => {
   plop.setHelper("slugify", text =>
     slugify(text, { lower: true, remove: /[']/g })
   )
+
+  plop.setActionType("copy", (answers, config, plop) => {
+    const src = plop.renderString(config.src, answers)
+    const dest = plop.renderString(config.dest, answers)
+
+    const dirname = path.dirname(dest)
+
+    fs.mkdirSync(dirname)
+    fs.copyFileSync(src, dest)
+  })
 
   plop.setGenerator("post", {
     description: "A basic Gatsby starter blog post.",
@@ -26,6 +38,11 @@ const plopConfig = plop => {
         type: "add",
         path: "content/blog/{{slugify title}}/index.md",
         templateFile: "templates/post.hbs",
+      },
+      {
+        type: "copy",
+        src: "static/blank.jpg",
+        dest: "content/blog/{{slugify title}}/images/blank.jpg",
       },
     ],
   })
