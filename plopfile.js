@@ -1,4 +1,12 @@
+const slugify = require("slugify")
+
 const plopConfig = plop => {
+  plop.setHelper("date", () => new Date().toISOString())
+
+  plop.setHelper("slugify", text =>
+    slugify(text, { lower: true, remove: /[']/g })
+  )
+
   plop.setGenerator("post", {
     description: "A basic Gatsby starter blog post.",
     prompts: [
@@ -16,9 +24,8 @@ const plopConfig = plop => {
     actions: [
       {
         type: "add",
-        path: "content/blog/{{dashCase title}}/index.md",
+        path: "content/blog/{{slugify title}}/index.md",
         templateFile: "templates/post.hbs",
-        data: { date: new Date().toISOString() },
       },
     ],
   })

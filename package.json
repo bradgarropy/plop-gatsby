@@ -37,7 +37,8 @@
   },
   "devDependencies": {
     "plop": "^2.7.1",
-    "prettier": "2.0.5"
+    "prettier": "2.0.5",
+    "slugify": "^1.4.4"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
