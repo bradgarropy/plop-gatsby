@@ -36,6 +36,7 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "@bradgarropy/plop-pack-actions": "^1.0.0",
     "plop": "^2.7.1",
     "prettier": "2.0.5",
     "slugify": "^1.4.4"
