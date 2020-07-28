@@ -1,6 +1,6 @@
 const plopConfig = plop => {
   plop.load("./plop/helpers.js")
-  plop.load("@bradgarropy/plop-pack-actions")
+  plop.load("plop-action-copy")
 
   plop.setGenerator("post", {
     description: "A basic Gatsby starter blog post.",
